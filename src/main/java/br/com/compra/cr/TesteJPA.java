@@ -14,6 +14,7 @@ public class TesteJPA {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CompraRapidaApplication.class, args);
+		
 		Produto p1 = new Produto(null, 123456, "Mouse", "informatica");
 		Produto p2 = new Produto(null, 123456, "Mouse", "informatica");
 		Produto p3 = new Produto(null, 123456, "Mouse", "informatica");
