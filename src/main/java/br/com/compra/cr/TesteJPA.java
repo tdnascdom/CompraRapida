@@ -25,10 +25,15 @@ public class TesteJPA {
 		em.getTransaction().begin();
 		em.persist(p1);
 		em.persist(p2);
-		em.persist(p3);
-		em.persist(p4);
+//		em.persist(p3);
+//		em.persist(p4);
+		//Produto p = em.find(Produto.class, 2);
+		//em.remove(p);
 		em.getTransaction().commit();
 		System.out.println("pronto!");
+		//emf.close();
+		//em.close();
+		
 	}
 
 }
