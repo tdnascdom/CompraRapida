@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.compra.rapida.dados.produto.Produto;
+import br.com.compra.rapida.dominio.Produto;
 
 @SpringBootApplication
 public class TesteJPA {
