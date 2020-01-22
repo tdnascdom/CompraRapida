@@ -1,4 +1,4 @@
-package br.com.compra.cr.dados.produto;
+package br.com.compra.rapida.dados.produto;
 
 import java.io.Serializable;
 

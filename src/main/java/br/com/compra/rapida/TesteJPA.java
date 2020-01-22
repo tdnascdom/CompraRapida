@@ -1,4 +1,4 @@
-package br.com.compra.cr;
+package br.com.compra.rapida;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.compra.cr.dados.produto.Produto;
+import br.com.compra.rapida.dados.produto.Produto;
 
 @SpringBootApplication
 public class TesteJPA {
@@ -22,17 +22,22 @@ public class TesteJPA {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("data-jpa");
 		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(p1);
-		em.persist(p2);
+		
+		em.getTransaction().begin();		
+//		em.persist(p1);// criando dados na base
+//		em.persist(p2);
 //		em.persist(p3);
-//		em.persist(p4);
-		//Produto p = em.find(Produto.class, 2);
-		//em.remove(p);
-		em.getTransaction().commit();
+//		em.persist(p4);		
+		
+		Produto p = em.find(Produto.class, 3);//busca antes de remover	
+		
+		em.remove(p);//remove apenas entidade monitoradas
+		
+		em.getTransaction().commit();//usa_lo sempre que for uma transação que não seja uma simples consulta 
 		System.out.println("pronto!");
-		//emf.close();
-		//em.close();
+		emf.close();
+		em.close();
+		
 		
 	}
 
