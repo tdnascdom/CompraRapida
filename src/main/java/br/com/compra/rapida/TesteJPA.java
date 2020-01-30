@@ -24,14 +24,14 @@ public class TesteJPA {
 		EntityManager em = emf.createEntityManager();
 		
 		em.getTransaction().begin();		
-//		em.persist(p1);// criando dados na base
-//		em.persist(p2);
-//		em.persist(p3);
-//		em.persist(p4);		
+		em.persist(p1);// criando dados na base
+		em.persist(p2);
+		em.persist(p3); 
+		em.persist(p4);		
 		
-		Produto p = em.find(Produto.class, 3);//busca antes de remover	
+		//Produto p = em.find(Produto.class, 3);//busca antes de remover	
 		
-		em.remove(p);//remove apenas entidade monitoradas
+		//em.remove(p);//remove apenas entidade monitoradas
 		
 		em.getTransaction().commit();//usa_lo sempre que for uma transação que não seja uma simples consulta 
 		System.out.println("pronto!");

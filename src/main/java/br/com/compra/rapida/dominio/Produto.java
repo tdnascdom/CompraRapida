@@ -18,15 +18,10 @@ public class Produto implements Serializable {
 	private String nomeProduto;
 	private String descricaoProduto;
 
-	public Produto() {
-	}
+	private double preco;
+	private double descPromoc;
 
-	public Produto(Integer id, Integer codigoProduto, String nomeProduto, String descricaoProduto) {
-		super();
-		this.id = id;
-		this.codigoProduto = codigoProduto;
-		this.nomeProduto = nomeProduto;
-		this.descricaoProduto = descricaoProduto;
+	public Produto() {
 	}
 
 	public Integer getId() {
@@ -61,6 +56,22 @@ public class Produto implements Serializable {
 		this.descricaoProduto = descricaoProduto;
 	}
 
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public double getDescPromoc() {
+		return descPromoc;
+	}
+
+	public void setDescPromoc(double descPromoc) {
+		this.descPromoc = descPromoc;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -68,14 +79,22 @@ public class Produto implements Serializable {
 	@Override
 	public String toString() {
 		return "Produto [id=" + id + ", codigoProduto=" + codigoProduto + ", nomeProduto=" + nomeProduto
-				+ ", descricaoProduto=" + descricaoProduto + "]";
+				+ ", descricaoProduto=" + descricaoProduto + ", preco=" + preco + ", descPromoc=" + descPromoc + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((codigoProduto == null) ? 0 : codigoProduto.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(descPromoc);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((descricaoProduto == null) ? 0 : descricaoProduto.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nomeProduto == null) ? 0 : nomeProduto.hashCode());
+		temp = Double.doubleToLongBits(preco);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -88,10 +107,29 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
+		if (codigoProduto == null) {
+			if (other.codigoProduto != null)
+				return false;
+		} else if (!codigoProduto.equals(other.codigoProduto))
+			return false;
+		if (Double.doubleToLongBits(descPromoc) != Double.doubleToLongBits(other.descPromoc))
+			return false;
+		if (descricaoProduto == null) {
+			if (other.descricaoProduto != null)
+				return false;
+		} else if (!descricaoProduto.equals(other.descricaoProduto))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (nomeProduto == null) {
+			if (other.nomeProduto != null)
+				return false;
+		} else if (!nomeProduto.equals(other.nomeProduto))
+			return false;
+		if (Double.doubleToLongBits(preco) != Double.doubleToLongBits(other.preco))
 			return false;
 		return true;
 	}

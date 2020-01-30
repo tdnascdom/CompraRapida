@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.compra.rapida.dominio.Categoria;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping(value = "/compras")
 public class ServicoRest {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Categoria> buscarProdutos() {
+	public List<Categoria> buscarCategorias() {
 		Categoria cat1 = new Categoria(1, "Informatica");
 		Categoria cat2 = new Categoria(2, "Escritório");
 		List<Categoria> listaCategorias = new ArrayList<>();
