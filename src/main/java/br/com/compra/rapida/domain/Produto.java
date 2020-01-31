@@ -1,4 +1,4 @@
-package br.com.compra.rapida.dominio;
+package br.com.compra.rapida.domain;
 
 import java.io.Serializable;
 
@@ -23,6 +23,21 @@ public class Produto implements Serializable {
 
 	public Produto() {
 	}
+	
+	
+
+	public Produto(Integer id, Integer codigoProduto, String nomeProduto, String descricaoProduto, double preco,
+			double descPromoc) {
+		super();
+		this.id = id;
+		this.codigoProduto = codigoProduto;
+		this.nomeProduto = nomeProduto;
+		this.descricaoProduto = descricaoProduto;
+		this.preco = preco;
+		this.descPromoc = descPromoc;
+	}
+
+
 
 	public Integer getId() {
 		return id;

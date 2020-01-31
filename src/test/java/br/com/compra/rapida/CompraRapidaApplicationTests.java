@@ -1,4 +1,4 @@
-package br.com.compra.cr;
+package br.com.compra.rapida;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

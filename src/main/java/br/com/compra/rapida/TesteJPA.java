@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import br.com.compra.rapida.dominio.Produto;
+import br.com.compra.rapida.domain.Produto;
 
 @SpringBootApplication
 public class TesteJPA {
@@ -15,10 +15,10 @@ public class TesteJPA {
 	public static void main(String[] args) {
 		SpringApplication.run(CompraRapidaApplication.class, args);
 		
-		Produto p1 = new Produto(null, 123456, "Mouse", "informatica");
-		Produto p2 = new Produto(null, 123456, "Mouse", "informatica");
-		Produto p3 = new Produto(null, 123456, "Mouse", "informatica");
-		Produto p4 = new Produto(null, 123456, "Mouse", "informatica");
+		Produto p1 = new Produto(null, 123456, "Mouse", "informatica", 0, 0);
+		Produto p2 = new Produto(null, 123456, "Mouse", "informatica", 0, 0);
+		Produto p3 = new Produto(null, 123456, "Mouse", "informatica", 0, 0);
+		Produto p4 = new Produto(null, 123456, "Mouse", "informatica", 0, 0);
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("data-jpa");
 		EntityManager em = emf.createEntityManager();

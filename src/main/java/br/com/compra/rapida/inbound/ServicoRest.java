@@ -1,4 +1,4 @@
-package br.com.compra.rapida.entrada;
+package br.com.compra.rapida.inbound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.compra.rapida.dominio.Categoria;
+import br.com.compra.rapida.domain.Categoria;
 
 @RestController
 @RequestMapping(value = "/compras")

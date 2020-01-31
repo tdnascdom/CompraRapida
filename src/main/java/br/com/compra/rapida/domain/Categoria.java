@@ -1,4 +1,4 @@
-package br.com.compra.rapida.dominio;
+package br.com.compra.rapida.domain;
 
 import java.io.Serializable;
 
