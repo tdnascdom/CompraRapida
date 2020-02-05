@@ -1,11 +1,17 @@
 package br.com.loader.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Produto implements Serializable {
@@ -21,10 +27,15 @@ public class Produto implements Serializable {
 	private double preco;
 	private double descPromoc;
 
+	@ManyToMany
+	@JoinTable(name = "PRODUTO_CATEGORIA", 
+	joinColumns = @JoinColumn(name = "produto_id"), 
+	inverseJoinColumns = @JoinColumn(name = "categoria_id")
+	)
+	private List<Categoria> categorias = new ArrayList<Categoria>();
+
 	public Produto() {
 	}
-	
-	
 
 	public Produto(Integer id, Integer codigoProduto, String nomeProduto, String descricaoProduto, double preco,
 			double descPromoc) {
@@ -36,8 +47,6 @@ public class Produto implements Serializable {
 		this.preco = preco;
 		this.descPromoc = descPromoc;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -87,8 +96,12 @@ public class Produto implements Serializable {
 		this.descPromoc = descPromoc;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 	@Override
