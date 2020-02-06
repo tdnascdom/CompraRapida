@@ -34,7 +34,7 @@ public class CompraRapidaApplication implements CommandLineRunner {
 		Produto p2 = new Produto(null, 324234325, "Impressora", "Acessorio", 800.00, 0);
 		Produto p3 = new Produto(null, 324234326, "Mouse", "Acessorio", 80.00, 0);
 
-//associando categorias com prosdutos
+//associando categorias com produtos
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2));
 
