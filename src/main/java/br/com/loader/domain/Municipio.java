@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import br.com.loader.domain.Cidade;
+import br.com.loader.domain.Estado;
 
 @Entity
 public class Municipio implements Serializable {
@@ -21,18 +21,18 @@ public class Municipio implements Serializable {
 	private String nome;
 
 	@ManyToOne
-	@JoinColumn(name = "cidade_id")
-	private Cidade cidade;
+	@JoinColumn(name = "estado_id")
+	private Estado estado;
 
 	public Municipio() {
 
 	}
 
-	public Municipio(Integer id, String nome, Cidade cidade) {
+	public Municipio(Integer id, String nome, Estado estado) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.cidade = cidade;
+		this.estado = estado;
 	}
 
 	public Integer getId() {
@@ -51,12 +51,12 @@ public class Municipio implements Serializable {
 		this.nome = nome;
 	}
 
-	public Cidade getCidade() {
-		return cidade;
+	public Estado getEstado() {
+		return estado;
 	}
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override

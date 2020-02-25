@@ -8,11 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import br.com.loader.domain.Categoria;
-import br.com.loader.domain.Cidade;
+import br.com.loader.domain.Estado;
 import br.com.loader.domain.Municipio;
 import br.com.loader.domain.Produto;
 import br.com.loader.repositories.CategoriaRepository;
-import br.com.loader.repositories.CidadeRepository;
+import br.com.loader.repositories.EstadoRepository;
 import br.com.loader.repositories.MunicipioRepository;
 import br.com.loader.repositories.ProdutoRepository;
 
@@ -24,7 +24,7 @@ public class CompraRapidaApplication implements CommandLineRunner {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	@Autowired
-	private CidadeRepository cidadeRespository;
+	private EstadoRepository estadeRespository;
 	@Autowired
 	private MunicipioRepository municipioRepository;
 
@@ -54,19 +54,19 @@ public class CompraRapidaApplication implements CommandLineRunner {
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
 
-		Cidade cid1 = new Cidade(null, "Minas Gerais");
-		Cidade cid2 = new Cidade(null, "São Paulo");
+		Estado est1 = new Estado(null, "Minas Gerais");
+		Estado est2 = new Estado(null, "São Paulo");
 
-//Associação Municipio e Cidade		
-		Municipio muni1 = new Municipio(null, "Uberlândia", cid1);
-		Municipio muni2 = new Municipio(null, "São Paulo", cid2);
-		Municipio muni3 = new Municipio(null, "Campinas", cid2);
+//Associação Municipio e Estado		
+		Municipio muni1 = new Municipio(null, "Uberlândia", est1);
+		Municipio muni2 = new Municipio(null, "São Paulo", est2);
+		Municipio muni3 = new Municipio(null, "Campinas", est2);
 
-//Associação Cidade e Municipio			
-		cid1.getMunicipios().addAll(Arrays.asList(muni1));
-		cid1.getMunicipios().addAll(Arrays.asList(muni2, muni3));
+//Associação Estado e Municipio			
+		est1.getMunicipios().addAll(Arrays.asList(muni1));
+		est1.getMunicipios().addAll(Arrays.asList(muni2, muni3));
 
-		cidadeRespository.saveAll(Arrays.asList(cid1, cid2));
+		estadeRespository.saveAll(Arrays.asList(est1, est2));
 		municipioRepository.saveAll(Arrays.asList(muni1, muni2, muni3));
 	}
 

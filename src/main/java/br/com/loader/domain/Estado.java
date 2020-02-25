@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Cidade implements Serializable {
+public class Estado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,14 +20,14 @@ public class Cidade implements Serializable {
 	private Integer id;
 	private String nome;
 
-	@OneToMany(mappedBy = "cidade")
+	@OneToMany(mappedBy = "estado")
 	private List<Municipio> municipios = new ArrayList<>();
 
-	public Cidade() {
+	public Estado() {
 
 	}
 
-	public Cidade(Integer id, String nome) {
+	public Estado(Integer id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -73,7 +73,7 @@ public class Cidade implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cidade other = (Cidade) obj;
+		Estado other = (Estado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
