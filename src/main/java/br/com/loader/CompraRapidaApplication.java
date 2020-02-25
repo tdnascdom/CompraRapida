@@ -24,7 +24,7 @@ public class CompraRapidaApplication implements CommandLineRunner {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 	@Autowired
-	private EstadoRepository estadeRespository;
+	private EstadoRepository estadoRespository;
 	@Autowired
 	private MunicipioRepository municipioRepository;
 
@@ -66,7 +66,7 @@ public class CompraRapidaApplication implements CommandLineRunner {
 		est1.getMunicipios().addAll(Arrays.asList(muni1));
 		est1.getMunicipios().addAll(Arrays.asList(muni2, muni3));
 
-		estadeRespository.saveAll(Arrays.asList(est1, est2));
+		estadoRespository.saveAll(Arrays.asList(est1, est2));
 		municipioRepository.saveAll(Arrays.asList(muni1, muni2, muni3));
 	}
 
