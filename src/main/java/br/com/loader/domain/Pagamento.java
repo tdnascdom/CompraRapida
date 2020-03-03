@@ -3,40 +3,39 @@ package br.com.loader.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import br.com.loader.domain.Estado;
+import br.com.loader.domain.enums.StatusPagamento;
 
 @Entity
-public class Municipio implements Serializable {
+@Inheritance(strategy = InheritanceType.JOINED) // tabelas usando herança
+public abstract class Pagamento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String nome;
+	private Integer status;
 
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name = "estado_id")
-	private Estado estado;
+	@OneToOne
+	@JoinColumn(name = "pedido_id")
+	@MapsId
+	private Pedido pedido;
 
-	public Municipio() {
+	public Pagamento() {
 
 	}
 
-	public Municipio(Integer id, String nome, Estado estado) {
+	public Pagamento(Integer id, StatusPagamento status, Pedido pedido) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.estado = estado;
+		this.status = status.getCod();
+		this.pedido = pedido;
 	}
 
 	public Integer getId() {
@@ -47,20 +46,20 @@ public class Municipio implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public StatusPagamento getStatus() {
+		return StatusPagamento.toEnum(status);
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setStatus(StatusPagamento status) {
+		this.status = status.getCod();
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public Pedido getPedido() {
+		return pedido;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	@Override
@@ -79,7 +78,7 @@ public class Municipio implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Municipio other = (Municipio) obj;
+		Pagamento other = (Pagamento) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
